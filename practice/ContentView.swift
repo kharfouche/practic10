@@ -8,19 +8,54 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var color1 = Color.red
+    @State var number = 0
+    
+//
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        ZStack {
+            color1
+                .ignoresSafeArea()
+            VStack{
+                Button {
+                    color1 = Color.green
+                } label: {
+                    RoundedRectangle(cornerRadius: 25)
+                        .frame(width: 100, height: 100)
+                        .overlay {
+                            Text("Click Me")
+                                .foregroundColor(.white)
+                        }
+                }
+                Text("\(number)")
+                
+                Button {
+                    number += 1
+                } label: {
+                    RoundedRectangle(cornerRadius: 25)
+                        .frame(width: 100, height: 100)
+                        .overlay {
+                            Text("Click Me now")
+                                .foregroundColor(.white)
+                        }
+                }
+          
+
+                
+                
+                
+            }
+            
         }
-        .padding()
+        
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        NavigationStack{
+            ContentView()
+        }
     }
 }
